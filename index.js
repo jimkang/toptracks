@@ -1,7 +1,7 @@
 function TopTracks({request}) {
-  return getTopTrackURIsForArtist;
+  return getTopTracksForArtist;
 
-  function getTopTrackURIsForArtist({artist, country}, done) {
+  function getTopTracksForArtist({artist, country}, done) {
     if (!country) {
       country = 'US';
     }
