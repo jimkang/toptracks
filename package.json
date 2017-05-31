@@ -1,6 +1,6 @@
 {
   "name": "toptracks",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Just gets top tracks for a Spotify artist. Not much code, but it DRYs up a common task.",
   "main": "index.js",
   "scripts": {
