@@ -1,4 +1,4 @@
-function TopTracks({request}) {
+function TopTracks({request, token}) {
   return getTopTracksForArtist;
 
   function getTopTracksForArtist({artist, country}, done) {
@@ -9,6 +9,9 @@ function TopTracks({request}) {
     var artistId = artist.replace('spotify:artist:', '');
 
     var reqOpts = {
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
       method: 'GET',
       url: `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=${country}`,
       json: true

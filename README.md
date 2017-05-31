@@ -3,6 +3,8 @@ toptracks
 
 Just gets top tracks for a Spotify artist. Not much code, but it DRYs up a common task. Requires ES6.
 
+The Spotify API requires an auth token for top tracks requests, so you'll have to register an application and go through the auth process (a module like `get-spotify-client-credentials' can help you on the server) in order to pass a token to `TopTracks`.
+
 Installation
 ------------
 
@@ -13,11 +15,28 @@ Usage
 
     var TopTracks = require('toptracks');
     var request = require('request');
+    var getSpotifyClientCredentials = require('get-spotify-client-credentials');
 
-    var topTracks = TopTracks({
-      request: request // Any http request function that implements the request interface can go here
-    });
-    topTracks({artist: 'spotify:artist:69lt02nubfNbPdrvH4tJxx', country: 'US'}, logTopTracks);
+    getSpotifyClientCredentials(
+      {
+        clientId: <Your Spotify API clientId>,
+        clientSecret: <Your Spotify API clientSecret>,
+        request: request
+      },
+      useCreds
+    );
+
+    function useCreds(error, token) {
+      if (error) {
+        console.log(error);
+      }
+      else {
+        var topTracks = TopTracks({
+          request: request // Any http request function that implements the request interface can go here
+        });
+        topTracks({artist: 'spotify:artist:69lt02nubfNbPdrvH4tJxx', country: 'US'}, logTopTracks);
+      }
+    }
 
     function logTopTracks(error, tracks) {
       if (error) {

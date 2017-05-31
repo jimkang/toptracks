@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jimkang/toptracks",
   "devDependencies": {
     "eslint": "^3.6.1",
+    "get-spotify-client-credentials": "^1.0.0",
     "request": "^2.75.0",
     "tape": "^4.6.0"
   },
